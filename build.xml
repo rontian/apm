@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?> 
+<?xml version="1.0" encoding="UTF-8"?>
 
 <project default="build" name="apm"
 	xmlns:if="ant:if"
-	xmlns:unless="ant:unless"> 
+	xmlns:unless="ant:unless">
 
 	<dirname property="apm.basedir" file="${ant.file.apm}" />
 
 	<property file="${apm.basedir}/build.config" description="build properties" />
-	
+
     <property name="apm.clientdir" value="${apm.basedir}/client" />
     <property name="apm.builddir" value="${apm.basedir}/client/out" />
     <property name="codetmpl" value="${apm.basedir}/client/_codetmpl" />
 
     <property name="AIR_SDK_HOME" value="${air.sdk}" />
     <taskdef resource="flexTasks.tasks" classpath="${air.sdk}/ant/lib/flexTasks.jar" />
-	
+
     <taskdef resource="net/sf/antcontrib/antlib.xml"/>
 	<target name="bootstrap">
 		<mkdir dir="${user.home}/.ant/lib"/>
@@ -25,6 +25,7 @@
 
 	<condition property="isWindows" else="false">
 		<os family="windows" />
+
 	</condition>
 
 	<condition property="isMacOS" else="false">
@@ -58,8 +59,8 @@
 		<property file="version.config" />
 		<var name="version" value="${version_major}.${version_minor}.${version_build}${version_preview}" />
 		<echo message="Building apm... ${version}"/>
-		<mxmlc 
-            output="${apm.builddir}/apm.swf" 
+		<mxmlc
+            output="${apm.builddir}/apm.swf"
             file="${apm.clientdir}/src/APMConsoleApp.as"
 			failonerror="true"
             maxmemory="1024m">

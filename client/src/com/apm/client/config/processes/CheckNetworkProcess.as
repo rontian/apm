@@ -16,12 +16,12 @@ package com.apm.client.config.processes
 	import com.apm.client.config.RunConfig;
 	import com.apm.client.logging.Log;
 	import com.apm.client.processes.ProcessBase;
-	
+
 	import flash.events.HTTPStatusEvent;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
-	
-	
+
+
 	/**
 	 * Checks internet network connectivity
 	 */
@@ -30,34 +30,34 @@ package com.apm.client.config.processes
 		////////////////////////////////////////////////////////
 		//  CONSTANTS
 		//
-		
+
 		private static const TAG:String = "CheckNetworkProcess";
-		
-		private static const DEFAULT_URL:String = "https://google.com";
-		
-		
+
+		private static const DEFAULT_URL:String = "https://baidu.com";
+
+
 		////////////////////////////////////////////////////////
 		//  VARIABLES
 		//
-		
+
 		private var _config:RunConfig;
-		
+
 		private var _loader:URLLoader;
-		
+
 		private var _testUrl:String;
-		
-		
+
+
 		////////////////////////////////////////////////////////
 		//  FUNCTIONALITY
 		//
-		
+
 		public function CheckNetworkProcess( config:RunConfig, testUrl:String = DEFAULT_URL )
 		{
 			_config = config;
 			_testUrl = testUrl;
 		}
-		
-		
+
+
 		override public function start( completeCallback:Function = null, failureCallback:Function = null ):void
 		{
 			super.start( completeCallback, failureCallback );
@@ -72,8 +72,8 @@ package com.apm.client.config.processes
 			{
 			}
 		}
-		
-		
+
+
 		private function statusHandler( event:HTTPStatusEvent ):void
 		{
 			_config.hasNetwork = (event.status == 200);
@@ -81,7 +81,7 @@ package com.apm.client.config.processes
 			_loader.close();
 			complete();
 		}
-		
+
 	}
-	
+
 }
