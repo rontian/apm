@@ -1,9 +1,6 @@
 .metadata
 out
-.idea/libraries
-.idea/workspace.xml
-.idea/usage.statistics.xml
-.idea/tasks.xml
-.idea/shelf
+.idea/
+!.idea/modules.xml
 *.zip
 build.config
